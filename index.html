@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>c0sm0s</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="img/wheel.png">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet"> -->
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Revalia');
+		* {
+			margin: 0;
+			font-family: Revalia, Helvetica, Arial;
+		}
+		.secret {
+			position: absolute;
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+<!-- actually this text should be in the dom to enable fonts in phaser -->
+<p class='secret'>Hello, friend, this is Project Sol. Have fun!</p>
+<script src='lib/phaser.js'></script>
+<script src='lib/HealthBar.standalone.js'></script>
+<script src='lib/pathfinding-browser.min.js'></script>
+<script>
+	function dip(x) {
+		return x / window.devicePixelRatio;
+	}
+
+	function toDip(x) {
+		return x * window.devicePixelRatio;
+	}
+
+	function getShip(instance) {
+		if (!instance.parent) return;
+
+		return instance.parent instanceof Ship
+			? instance.parent
+			: getShip(instance.parent);
+	}
+
+	function getRoom(instance) {
+		if (!instance.parent) return;
+
+		return instance.parent instanceof Room
+			? instance.parent
+			: getRoom(instance.parent);
+	}
+
+	// function addTargetIndicator() {
+	// 	// Target indicator
+	// 	this.g = game.make.graphics();
+	// 	this.g.lineStyle(2, 0xff2200, 1);
+	// 	this.g.drawCircle(dip(this.sprite.width)/2-10, dip(this.sprite.height)/2-10, 100);
+	// 	this.strokeTargetTween = game.add.tween(this.g).to(
+	// 		{alpha: 0},
+	// 		1500,
+	// 		Phaser.Easing.Linear.None,
+	// 		true,
+	// 		0,
+	// 		-1,
+	// 		true
+	// 	);
+	// 	this.strokeTarget(false);
+
+	// 	Ship.prototype.strokeTarget = function(on) {
+	// 		if (on) {
+	// 			this.g.visible = true;
+	// 			this.strokeTargetTween.resume();
+	// 		} else {
+	// 			this.g.visible = false;
+	// 			this.strokeTargetTween.pause();
+	// 		}
+	// 	};
+	// }
+</script>
+
+<script src='src/Map.js'></script>
+<script src='src/Human.js'></script>
+
+<script src='src/Energy.js'></script>
+<script src='src/EnergyBar.js'></script>
+
+<script src='src/Wheel.js'></script>
+<script src='src/Weapon.js'></script>
+<script src='src/Shield.js'></script>
+<script src='src/Cargo.js'></script>
+<script src='src/Reactor.js'></script>
+
+<script src='src/Room.js'></script>
+<script src='src/WheelRoom.js'></script>
+<script src='src/WeaponRoom.js'></script>
+<script src='src/ShieldRoom.js'></script>
+<script src='src/CargoRoom.js'></script>
+<script src='src/ReactorRoom.js'></script>
+
+<script src='src/Ship.js'></script>
+<script>
+	const width = (window.innerWidth || document.documentElement.clientWidth) * window.devicePixelRatio;
+	const height = (window.innerHeight || document.documentElement.clientHeight) * window.devicePixelRatio;
+	const game = new Phaser.Game({
+		width: dip(width),
+		height: dip(height),
+		renderer: Phaser.CANVAS,
+		// renderer: Phaser.AUTO,
+		parent: 'app',
+		resolution: window.devicePixelRatio,
+		state: {
+			preload: preload,
+			create: create,
+			update: update,
+			render: render
+		}
+	});
+
+	game.app = {
+		portrait: undefined,
+		ship: undefined,
+		enemyShip: undefined,
+		activeWeapon: undefined,
+		activeHuman: undefined,
+		modes: {
+			ship: {name:'ship'},
+			battle: {name:'battle'},
+			store: {name:'store'},
+			map: {name:'map'},
+			event: {name:'event'}, // deciding which event to generate, middle mode
+		},
+		mode: undefined,
+		planetNumber: 0,
+
+		sounds: {
+			hit: undefined,
+			miss: undefined,
+			gameOver: undefined,
+			enableShield: undefined,
+			disableShield: undefined,
+		}
+	};
+
+	// Go to travel map button
+	var wheel;
+	var interface;
+	var map;
+	var ships;
+	var background;
+	// Graphics object used to debug game
+	var g;
+
+	function preload() {
+		game.load.image('ship', 'img/ship.png');
+		game.load.image('ship2', 'img/ship6.png');
+		game.load.image('blaster', 'img/blaster.png');
+		game.load.image('laser2', 'img/laser2.png');
+		game.load.image('wheel', 'img/wheel.png');
+		game.load.image('planet', 'img/planet.png');
+		game.load.image('stars', 'img/stars.jpg');
+		game.load.image('stars2', 'img/stars5.jpg');
+		game.load.image('rocket', 'img/bomb.png');
+		game.load.image('shield', 'img/shield.png');
+		game.load.image('human', 'img/man.png');
+		game.load.image('cargo', 'img/cargo.png');
+		game.load.image('openedCargo', 'img/openedCargo.png');
+		game.load.atlas('cargo-atlas', 'img/cargo-atlas.png', 'img/cargo-atlas.json');
+		game.load.atlas('energy-atlas', 'img/energy-atlas.png', 'img/energy-atlas.json');
+		game.load.atlas('reactor-atlas', 'img/reactor-atlas.png', 'img/reactor-atlas.json');
+		game.load.atlas('target-atlas', 'img/target-atlas.png', 'img/target-atlas.json');
+		game.load.image('shortcut1', 'img/1.png');
+		game.load.image('shortcut2', 'img/2.png');
+		game.load.spritesheet('explosion', 'img/explosion_sprt.png', 110, 74);
+		game.load.image('laser-bullet', 'img/laser-bullet.png');
+
+		game.load.audio('hit', 'sound/hit.m4a');
+		game.load.audio('miss', 'sound/miss.m4a');
+		game.load.audio('enableShield', 'sound/shieldOn.m4a');
+		game.load.audio('disableShield', 'sound/shieldOff.m4a');
+		game.load.audio('gameOver', 'sound/gameOver.m4a');
+	}
+
+
+	function create() {
+		// To detect collisions between missiles and rooms and shield
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+
+		game.input.mouse.capture = true;
+		game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
+
+		game.app.mode = game.app.modes.ship;
+		game.app.portrait = game.height > game.width;
+	
+		background = game.add.sprite(0, 0, 'stars2');
+		background.width = toDip(game.width);
+		background.height = toDip(game.height);
+
+		g = game.add.graphics();
+		window.debugPoint = function(p, color) {
+			g.beginFill(color || 0xff0000)
+			g.drawCircle(p.x, p.y, 20)
+			g.endFill()
+		}
+		window.debugXY = function(x, y, color) {
+			g.beginFill(color || 0xff0000)
+			g.drawCircle(x, y, 20)
+			g.endFill()
+		}
+
+		ships = game.add.group(game.world, 'Ships');
+		game.app.ship = new Ship(game, game.app.planetNumber, dip(game.width)/10, dip(game.height) / dip(4), true);
+		game.app.ship.blasterRoom.energyBar.energyClicked(0);
+		game.app.ship.rocketRoom.energyBar.energyClicked(1);
+		game.app.ship.shieldRoom.energyBar.energyClicked(0);
+		// game.app.ship.wheelRoom.energyBar.energyClicked(0);
+		ships.add(game.app.ship);
+		map = new Map(game);
+
+		interface = game.add.group(game.world, 'Interface');
+
+		wheel = new Wheel(game, game.width / 2, 80, toDip(100), toDip(100));
+		wheel.strokeTarget(true);
+		interface.add(wheel);
+
+		game.app.sounds.hit = game.add.audio('hit');
+		game.app.sounds.miss = game.add.audio('miss');
+		game.app.sounds.gameOver = game.add.audio('gameOver');
+		game.app.sounds.enableShield = game.add.audio('enableShield');
+		game.app.sounds.disableShield = game.add.audio('disableShield');
+
+		if (game.app.portrait) {
+			ships.scale.setTo(0.5, 0.5);
+			interface.scale.setTo(0.5, 0.5);
+		}
+
+		game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
+		game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(function() {
+			game.paused = !game.paused;
+			pauseText.visible = game.paused;
+			if (game.paused) {
+				pauseStartTime = game.time.now;
+			} else {
+				game.app.pauseTime = pauseStartTime - game.time.now;
+			}
+		});
+
+		var pauseText = game.add.text(game.world.centerX, 100, 'PAUSE\npress space to continue', {font: '16px Revalia', fill: '#EFD6AC'});
+		pauseText.anchor.setTo(0.5, 0.5);
+		pauseText.visible = false;
+
+
+		game.world.bringToTop(g);
+
+		g.alpha = 0.5;
+		// g
+		// 	.beginFill(0x000000)
+		// 	.moveTo(10,10)
+		// 	.lineTo(game.width-10,10)
+		// 	.lineTo(game.width-10,game.height-10)
+		// 	.lineTo(10,game.height-10)
+		// 	.moveTo(20,20)
+		// 	.lineTo(game.width-20,20)
+		// 	.lineTo(game.width-20,game.height-20)
+		// 	.lineTo(20,game.height-20)
+		// g
+		// 	.beginFill(0x000000)
+		// 	.moveTo(20,20)
+		// 	.lineTo(200,20)
+		// 	.lineTo(200,200)
+		// 	.lineTo(20,200)
+		// 	.arc(100,100,100,0,Math.PI)
+		// 	.lineTo(100,150)
+		// 	.lineTo(150,150)
+
+		var mask = game.add.graphics();
+		mask.alpha = 0;
+		mask.beginFill(0x000000)
+		mask.drawCircle(100,100,100);
+		mask.endFill()
+
+		// var size = dip(wheel.width) * 1.5;
+		// highlight(
+		// 	wheel.x - size / 2,
+		// 	wheel.y - size / 2,
+		// 	size,
+		// 	size)
+
+		window.mask = mask;
+	}
+
+	function highlight(x,y,w,h) {
+		g.alpha = 0.5;
+		g
+			.beginFill(0x000000)
+			.moveTo(0,0)
+			.lineTo(game.width,0)
+			.lineTo(game.width, game.height)
+			.lineTo(0, game.height)
+			.lineTo(0,y)
+			.lineTo(x,y)
+			.lineTo(x,y+h)
+			.lineTo(x+w,y+h)
+			.lineTo(x+w,y)
+			.lineTo(0,y)
+			.lineTo(0,0)
+	}
+
+	// function hl(x,y,radius) {
+	// 	var left = x-radius;
+	// 	var right = x+radius;
+	// 	var top = y-radius;
+	// 	var bottom = y+radius;
+	// 	var BEZIER_CONTROL_POINT_CONST = 0.552284749831;
+	// 	var bezierControlPoint = radius * BEZIER_CONTROL_POINT_CONST
+	// 	debugXY(left,y)
+	// 	debugXY(x,top)
+	// 	debugXY(x,y)
+	// 	debugXY(left, y - bezierControlPoint, 0x0000ff)
+	// 	debugXY(x - bezierControlPoint, top, 0x00ff00)
+
+	// 	debugXY(right,y)
+	// 	debugXY(x + bezierControlPoint, top, 0x0000ff)
+	// 	debugXY(right, y - bezierControlPoint, 0x00ff00)
+	// 	g.alpha = 0.5;
+	// 	g
+	// 		.beginFill(0x000000)
+	// 		.moveTo(0,0)
+	// 		.lineTo(game.width,0)
+	// 		.lineTo(game.width, game.height)
+	// 		.lineTo(0, game.height)
+	// 		.lineTo(0,y)
+	// 		.lineTo(left,y)
+	// 		.bezierCurveTo(
+	// 			left, y - bezierControlPoint,
+	// 			x - bezierControlPoint, top,
+	// 			x,top)
+	// 		.moveTo(x,top)
+	// 		.bezierCurveTo(
+	// 			x + bezierControlPoint, top,
+	// 			right, y - bezierControlPoint,
+	// 			right, y)
+	// 		.moveTo(right, y)
+	// 		.bezierCurveTo(
+	// 			right, y + bezierControlPoint,
+	// 			x + bezierControlPoint, bottom,
+	// 			x, bottom)
+	// 		.moveTo(x, bottom)
+	// 		.bezierCurveTo(
+	// 			x - bezierControlPoint, bottom,
+	// 			left, y + bezierControlPoint,
+	// 			left, y)
+	// 		.moveTo(left, y)
+	// 		.lineTo(0, y)
+	// 		.lineTo(0, 0)
+	// }
+
+
+	function update() {
+		if (game.app.mode === game.app.modes.map && !map.visible) {
+			map.show();
+		} else if (game.app.mode !== game.app.modes.map && map.visible) {
+			map.hide();
+		}
+
+		if (game.app.mode === game.app.modes.event) {
+			if (game.app.ship.fuel <= 0) {
+				game.app.ship.defeatText.visible = true;
+				return;
+			}
+			game.app.ship.fly();
+			genereteEvent();
+			if (game.app.mode === game.app.modes.battle) {
+				wheel.strokeCanceled = false;
+			}
+		}
+
+		if (game.app.mode === game.app.modes.battle) {
+			if (!game.app.enemyShip) {
+				wheel.disable();
+
+				addEnemy();
+			} else {
+				if (game.app.enemyShip.planetNumber !== game.app.planetNumber) {
+					wheel.disable();
+
+					game.app.enemyShip.destroy();
+					addEnemy();
+				} else if (game.app.enemyShip.health <= 0) {
+					wheel.enable();
+				}
+			}
+
+			if (game.app.enemyShip) {
+				if (game.app.enemyShip.health > 0) {
+					// Enemy tries to attack player
+					if (game.app.enemyShip.blasterRoom.isEnabled() &&
+						game.app.enemyShip.blasterRoom.isReady() &&
+						game.app.ship.health > 0)
+					{
+						game.app.enemyShip.blaster.shoot(game.app.ship.blasterRoom);
+					}
+				} else {
+					if (!wheel.strokeCanceled) {
+						wheel.strokeTarget(true);
+					}
+				}
+			}
+		}
+	}
+
+
+	function render() {
+
+	}
+
+
+	function restart() {
+
+	}
+
+
+	function genereteEvent() {
+		// var rnd = game.rnd.integerInRange(1,3);
+		// For now, always battle
+		var rnd = 2;
+		switch (rnd) {
+			case 1:
+				game.app.mode = game.app.modes.ship;
+				break;
+			case 2:
+				game.app.mode = game.app.modes.battle;
+				break;
+			case 3:
+				game.app.mode = game.app.modes.store;
+				break;
+		}
+	}
+
+
+	function addEnemy() {
+		game.app.enemyShip = new Ship(game, game.app.planetNumber, (game.width / 10) * 6, dip(game.height) / dip(4), false);
+		game.app.enemyShip.blasterRoom.energyBar.energyClicked(0);
+		game.app.enemyShip.shieldRoom.energyBar.energyClicked(0);
+		game.app.enemyShip.wheelRoom.energyBar.energyClicked(0);
+		ships.add(game.app.enemyShip);
+	}
+
+</script>
+</body>
+</html>
