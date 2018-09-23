@@ -21,7 +21,7 @@ function Ship(game, planetNumber, x, y, isPlayer) {
 	this.fuel = 4;
 	this.scrap = isPlayer ? 10 : game.rnd.integerInRange(3, 20);
 
-	this.sprite = new Phaser.Sprite(game, 0, 0, isPlayer ? 'ship' : 'ship2');
+	this.sprite = new Phaser.Sprite(game, 0, 0, 'game-atlas', isPlayer ? 'ship.png' : 'ship2.png');
 	this.sprite.width = toDip(300);
 	this.sprite.height = toDip(350);
 

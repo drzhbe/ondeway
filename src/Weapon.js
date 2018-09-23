@@ -35,7 +35,7 @@ function Weapon(game, weaponType, isPlayer) {
 	// Bullet is released and flying to this room
 	this.bulletIsGoingToRoom = undefined;
 
-	this.sprite = new Phaser.Sprite(game, 0, 0, this.weaponName);
+	this.sprite = new Phaser.Sprite(game, 0, 0, 'game-atlas', `${this.weaponName}.png`);
 	this.sprite.width = this.w;
 	this.sprite.height = this.h;
 	this.sprite.anchor.setTo(0.5, 0.5);
@@ -58,7 +58,7 @@ function Weapon(game, weaponType, isPlayer) {
 
 	// Add to the global coords
 	var bulletType = weaponType === 'rocket' ? 'rocket' : 'laser-bullet';
-	this.bullet = game.add.sprite(this.x, this.y, bulletType);
+	this.bullet = game.add.sprite(this.x, this.y, 'game-atlas', `${bulletType}.png`);
 	this.bullet.anchor.setTo(0.5, 0.5);
 	if (weaponType === 'rocket') {
 		this.bullet.width = this.w;

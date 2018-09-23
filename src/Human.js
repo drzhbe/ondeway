@@ -7,7 +7,7 @@ function Human(game, room) {
 	this.x = room.x;
 	this.y = room.y;
 
-	this.sprite = this.create(5, 5, 'human');
+	this.sprite = this.create(5, 5, 'game-atlas', 'human.png');
 	this.sprite.width = toDip(30);
 	this.sprite.height = toDip(50);
 	this.sprite.inputEnabled = true;

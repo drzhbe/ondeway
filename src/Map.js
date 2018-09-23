@@ -43,7 +43,7 @@ function Planet(game, i, x, y) {
 	this.y = y;
 	this.planetNumber = i;
 
-	this.sprite = new Phaser.Sprite(game, 0, 0, 'planet');
+	this.sprite = new Phaser.Sprite(game, 0, 0, 'game-atlas', 'planet.png');
 	this.sprite.width = toDip(100);
 	this.sprite.height = toDip(100);
 	this.sprite.anchor.setTo(0.5, 0.5);
@@ -82,7 +82,7 @@ Planet.prototype.updateView = function() {
 		this.sprite.tint = 0xffaa00;
 
 		if (!this.youAreHereIndicator) {
-			this.youAreHereIndicator = new Phaser.Sprite(game, -40, -5, 'ship');
+			this.youAreHereIndicator = new Phaser.Sprite(game, -40, -5, 'game-atlas', 'ship.png');
 			this.youAreHereIndicator.scale.setTo(0, 0);
 			this.youAreHereIndicator.anchor.setTo(0.5, 0.5);
 			this.add(this.youAreHereIndicator);

@@ -8,7 +8,7 @@ function Wheel(game, x, y, w, h) {
 
 	this.strokeCanceled = false;
 
-	this.sprite = new Phaser.Sprite(game, 0, 0, 'wheel');
+	this.sprite = new Phaser.Sprite(game, 0, 0, 'game-atlas', 'wheel.png');
 	this.sprite.anchor.setTo(0.5, 0.5);
 	this.sprite.width = this.w;
 	this.sprite.height = this.h;
@@ -38,7 +38,10 @@ Wheel.prototype = Object.create(Phaser.Group.prototype);
 Wheel.prototype.constructor = Wheel;
 
 Wheel.prototype.downHandler = function() {
-	if (game.app.mode === game.app.modes.battle && game.app.enemyShip.health > 0) return;
+	if (game.app.mode === game.app.modes.battle &&
+			game.app.enemyShip.health > 0) {
+		return;
+	}
 
 	game.add.tween(this.sprite).to(
 		{angle: 180},
@@ -55,7 +58,10 @@ Wheel.prototype.downHandler = function() {
 };
 
 Wheel.prototype.overHandler = function() {
-	if (game.app.mode === game.app.modes.battle && game.app.enemyShip.health > 0) return;
+	if (game.app.mode === game.app.modes.battle &&
+			game.app.enemyShip.health > 0) {
+		return;
+	}
 
 	game.add.tween(this.sprite).to(
 		{angle: 45},
@@ -71,7 +77,10 @@ Wheel.prototype.overHandler = function() {
 };
 
 Wheel.prototype.outHandler = function() {
-	if (game.app.mode === game.app.modes.battle && game.app.enemyShip.health > 0) return;
+	if (game.app.mode === game.app.modes.battle &&
+			game.app.enemyShip.health > 0) {
+		return;
+	}
 
 	game.add.tween(this.sprite).to(
 		{angle: 0},

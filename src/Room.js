@@ -64,7 +64,7 @@ function Room(game, gridX, gridY, ship, name, energyCapacity, shortcut) {
 		// 	{font: '18px Arial', fill: '#606060'}
 		// );
 
-		this.shortcutSprite = new Phaser.Sprite(game, 8, this.size-24, 'shortcut'+t);
+		this.shortcutSprite = new Phaser.Sprite(game, 8, this.size-24, 'game-atlas', `shortcut${t}.png`);
 		this.shortcutSprite.scale.setTo(toDip(0.5), toDip(0.5));
 
 		// Handle keyboard room activation if shortcut exists

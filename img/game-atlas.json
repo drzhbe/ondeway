@@ -1,0 +1,265 @@
+{
+    "frames": {
+        "ship.png": {
+            "frame": {
+                "y": 0, 
+                "x": 0, 
+                "w": 1226, 
+                "h": 1414
+            }, 
+            "rotated": false, 
+            "filename": "ship.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 1414, 
+                "w": 1226
+            }, 
+            "spriteSourceSize": {
+                "y": 0, 
+                "x": 0, 
+                "w": 1226, 
+                "h": 1414
+            }
+        }, 
+        "ship2.png": {
+            "frame": {
+                "y": 0, 
+                "x": 1226, 
+                "w": 500, 
+                "h": 403
+            }, 
+            "rotated": false, 
+            "filename": "ship2.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 403, 
+                "w": 500
+            }, 
+            "spriteSourceSize": {
+                "y": 0, 
+                "x": 1226, 
+                "w": 500, 
+                "h": 403
+            }
+        }, 
+        "planet.png": {
+            "frame": {
+                "y": 403, 
+                "x": 1226, 
+                "w": 300, 
+                "h": 300
+            }, 
+            "rotated": false, 
+            "filename": "planet.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 300, 
+                "w": 300
+            }, 
+            "spriteSourceSize": {
+                "y": 403, 
+                "x": 1226, 
+                "w": 300, 
+                "h": 300
+            }
+        }, 
+        "shield.png": {
+            "frame": {
+                "y": 703, 
+                "x": 1226, 
+                "w": 216, 
+                "h": 232
+            }, 
+            "rotated": false, 
+            "filename": "shield.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 232, 
+                "w": 216
+            }, 
+            "spriteSourceSize": {
+                "y": 703, 
+                "x": 1226, 
+                "w": 216, 
+                "h": 232
+            }
+        }, 
+        "rocket.png": {
+            "frame": {
+                "y": 703, 
+                "x": 1442, 
+                "w": 208, 
+                "h": 225
+            }, 
+            "rotated": false, 
+            "filename": "rocket.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 225, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 703, 
+                "x": 1442, 
+                "w": 208, 
+                "h": 225
+            }
+        }, 
+        "blaster.png": {
+            "frame": {
+                "y": 935, 
+                "x": 1226, 
+                "w": 212, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "blaster.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 212
+            }, 
+            "spriteSourceSize": {
+                "y": 935, 
+                "x": 1226, 
+                "w": 212, 
+                "h": 224
+            }
+        }, 
+        "wheel.png": {
+            "frame": {
+                "y": 935, 
+                "x": 1438, 
+                "w": 208, 
+                "h": 208
+            }, 
+            "rotated": false, 
+            "filename": "wheel.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 208, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 935, 
+                "x": 1438, 
+                "w": 208, 
+                "h": 208
+            }
+        }, 
+        "human.png": {
+            "frame": {
+                "y": 403, 
+                "x": 1526, 
+                "w": 112, 
+                "h": 191
+            }, 
+            "rotated": false, 
+            "filename": "human.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 191, 
+                "w": 112
+            }, 
+            "spriteSourceSize": {
+                "y": 403, 
+                "x": 1526, 
+                "w": 112, 
+                "h": 191
+            }
+        }, 
+        "laser-bullet.png": {
+            "frame": {
+                "y": 403, 
+                "x": 1638, 
+                "w": 14, 
+                "h": 83
+            }, 
+            "rotated": false, 
+            "filename": "laser-bullet.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 83, 
+                "w": 14
+            }, 
+            "spriteSourceSize": {
+                "y": 403, 
+                "x": 1638, 
+                "w": 14, 
+                "h": 83
+            }
+        }, 
+        "triangle.png": {
+            "frame": {
+                "y": 403, 
+                "x": 1652, 
+                "w": 62, 
+                "h": 53
+            }, 
+            "rotated": false, 
+            "filename": "triangle.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 53, 
+                "w": 62
+            }, 
+            "spriteSourceSize": {
+                "y": 403, 
+                "x": 1652, 
+                "w": 62, 
+                "h": 53
+            }
+        }, 
+        "shortcut2.png": {
+            "frame": {
+                "y": 486, 
+                "x": 1638, 
+                "w": 30, 
+                "h": 36
+            }, 
+            "rotated": false, 
+            "filename": "shortcut2.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 36, 
+                "w": 30
+            }, 
+            "spriteSourceSize": {
+                "y": 486, 
+                "x": 1638, 
+                "w": 30, 
+                "h": 36
+            }
+        }, 
+        "shortcut1.png": {
+            "frame": {
+                "y": 486, 
+                "x": 1668, 
+                "w": 15, 
+                "h": 36
+            }, 
+            "rotated": false, 
+            "filename": "shortcut1.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 36, 
+                "w": 15
+            }, 
+            "spriteSourceSize": {
+                "y": 486, 
+                "x": 1668, 
+                "w": 15, 
+                "h": 36
+            }
+        }
+    }, 
+    "meta": {
+        "hash": "2df8883e3e", 
+        "name": "game-atlas", 
+        "height": 1414, 
+        "sprite_path": "game-atlas.png", 
+        "width": 1726, 
+        "version": "0.11.1", 
+        "sprite_filename": "game-atlas.png"
+    }
+}

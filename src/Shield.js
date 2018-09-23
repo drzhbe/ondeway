@@ -22,7 +22,7 @@ function Shield(game, ship) {
 	this.originalCooldown = 5000;
 	this.cooldown = this.originalCooldown;
 
-	this.sprite = this.create(0, 0, 'shield');
+	this.sprite = this.create(0, 0, 'game-atlas', 'shield.png');
 	this.sprite.width = this.w;
 	this.sprite.height = this.h;
 	this.sprite.anchor.setTo(0.5, 0.5);
