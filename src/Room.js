@@ -75,7 +75,7 @@ function Room(game, gridX, gridY, ship, name, energyCapacity, shortcut) {
 
 	// TODO mark and remove mark
 	if (!this.isPlayer) {
-		this.targetedMark = new Phaser.Sprite(game, 5, this.size - 34, 'target-atlas');
+		this.targetedMark = new Phaser.Sprite(game, 5, this.size - 34, 'game-atlas');
 		this.targetedMark.scale.setTo(toDip(0.4));
 		// targeted by 1 (blaster) or 2 (rocket)
 		this.targeted1 = false;
@@ -157,11 +157,11 @@ Room.prototype.toggleMark = function(weaponNumber) {
 
 	// Handle delayed shot marks (targeted)
 	if (this.targeted1 && this.targeted2) {
-		this.targetedMark.frameName = 'target12';
+		this.targetedMark.frameName = 'target12.png';
 	} else if (this.targeted1) {
-		this.targetedMark.frameName = 'target1';
+		this.targetedMark.frameName = 'target1.png';
 	} else if (this.targeted2) {
-		this.targetedMark.frameName = 'target2';
+		this.targetedMark.frameName = 'target2.png';
 	}
 	this.targetedMark.visible = this.targeted1 || this.targeted2;
 };

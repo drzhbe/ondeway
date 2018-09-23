@@ -105,10 +105,241 @@
                 "h": 225
             }
         }, 
-        "blaster.png": {
+        "reactor9.png": {
             "frame": {
                 "y": 935, 
                 "x": 1226, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor9.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 935, 
+                "x": 1226, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor8.png": {
+            "frame": {
+                "y": 935, 
+                "x": 1434, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor8.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 935, 
+                "x": 1434, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor7.png": {
+            "frame": {
+                "y": 1159, 
+                "x": 1226, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor7.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1159, 
+                "x": 1226, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor6.png": {
+            "frame": {
+                "y": 1159, 
+                "x": 1434, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor6.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1159, 
+                "x": 1434, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor5.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 0, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor5.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 0, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor4.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 208, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor4.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 208, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor3.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 416, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor3.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 416, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor2.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 624, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor2.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 624, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor10.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 832, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor10.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 832, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor1.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 1040, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor1.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 1040, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "reactor0.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 1248, 
+                "w": 208, 
+                "h": 224
+            }, 
+            "rotated": false, 
+            "filename": "reactor0.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 224, 
+                "w": 208
+            }, 
+            "spriteSourceSize": {
+                "y": 1414, 
+                "x": 1248, 
+                "w": 208, 
+                "h": 224
+            }
+        }, 
+        "blaster.png": {
+            "frame": {
+                "y": 1414, 
+                "x": 1456, 
                 "w": 212, 
                 "h": 224
             }, 
@@ -120,16 +351,16 @@
                 "w": 212
             }, 
             "spriteSourceSize": {
-                "y": 935, 
-                "x": 1226, 
+                "y": 1414, 
+                "x": 1456, 
                 "w": 212, 
                 "h": 224
             }
         }, 
         "wheel.png": {
             "frame": {
-                "y": 935, 
-                "x": 1438, 
+                "y": 0, 
+                "x": 1726, 
                 "w": 208, 
                 "h": 208
             }, 
@@ -141,16 +372,16 @@
                 "w": 208
             }, 
             "spriteSourceSize": {
-                "y": 935, 
-                "x": 1438, 
+                "y": 0, 
+                "x": 1726, 
                 "w": 208, 
                 "h": 208
             }
         }, 
         "human.png": {
             "frame": {
-                "y": 403, 
-                "x": 1526, 
+                "y": 208, 
+                "x": 1726, 
                 "w": 112, 
                 "h": 191
             }, 
@@ -162,16 +393,37 @@
                 "w": 112
             }, 
             "spriteSourceSize": {
-                "y": 403, 
-                "x": 1526, 
+                "y": 208, 
+                "x": 1726, 
                 "w": 112, 
                 "h": 191
             }
         }, 
+        "target12.png": {
+            "frame": {
+                "y": 399, 
+                "x": 1726, 
+                "w": 140, 
+                "h": 70
+            }, 
+            "rotated": false, 
+            "filename": "target12.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 70, 
+                "w": 140
+            }, 
+            "spriteSourceSize": {
+                "y": 399, 
+                "x": 1726, 
+                "w": 140, 
+                "h": 70
+            }
+        }, 
         "laser-bullet.png": {
             "frame": {
-                "y": 403, 
-                "x": 1638, 
+                "y": 208, 
+                "x": 1838, 
                 "w": 14, 
                 "h": 83
             }, 
@@ -183,16 +435,100 @@
                 "w": 14
             }, 
             "spriteSourceSize": {
-                "y": 403, 
-                "x": 1638, 
+                "y": 208, 
+                "x": 1838, 
                 "w": 14, 
                 "h": 83
             }
         }, 
+        "energyEmpty.png": {
+            "frame": {
+                "y": 208, 
+                "x": 1852, 
+                "w": 36, 
+                "h": 72
+            }, 
+            "rotated": false, 
+            "filename": "energyEmpty.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 72, 
+                "w": 36
+            }, 
+            "spriteSourceSize": {
+                "y": 208, 
+                "x": 1852, 
+                "w": 36, 
+                "h": 72
+            }
+        }, 
+        "energy.png": {
+            "frame": {
+                "y": 208, 
+                "x": 1888, 
+                "w": 36, 
+                "h": 72
+            }, 
+            "rotated": false, 
+            "filename": "energy.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 72, 
+                "w": 36
+            }, 
+            "spriteSourceSize": {
+                "y": 208, 
+                "x": 1888, 
+                "w": 36, 
+                "h": 72
+            }
+        }, 
+        "target2.png": {
+            "frame": {
+                "y": 291, 
+                "x": 1838, 
+                "w": 70, 
+                "h": 70
+            }, 
+            "rotated": false, 
+            "filename": "target2.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 70, 
+                "w": 70
+            }, 
+            "spriteSourceSize": {
+                "y": 291, 
+                "x": 1838, 
+                "w": 70, 
+                "h": 70
+            }
+        }, 
+        "target1.png": {
+            "frame": {
+                "y": 469, 
+                "x": 1726, 
+                "w": 70, 
+                "h": 70
+            }, 
+            "rotated": false, 
+            "filename": "target1.png", 
+            "trimmed": false, 
+            "sourceSize": {
+                "h": 70, 
+                "w": 70
+            }, 
+            "spriteSourceSize": {
+                "y": 469, 
+                "x": 1726, 
+                "w": 70, 
+                "h": 70
+            }
+        }, 
         "triangle.png": {
             "frame": {
-                "y": 403, 
-                "x": 1652, 
+                "y": 399, 
+                "x": 1866, 
                 "w": 62, 
                 "h": 53
             }, 
@@ -204,16 +540,16 @@
                 "w": 62
             }, 
             "spriteSourceSize": {
-                "y": 403, 
-                "x": 1652, 
+                "y": 399, 
+                "x": 1866, 
                 "w": 62, 
                 "h": 53
             }
         }, 
         "shortcut2.png": {
             "frame": {
-                "y": 486, 
-                "x": 1638, 
+                "y": 361, 
+                "x": 1838, 
                 "w": 30, 
                 "h": 36
             }, 
@@ -225,16 +561,16 @@
                 "w": 30
             }, 
             "spriteSourceSize": {
-                "y": 486, 
-                "x": 1638, 
+                "y": 361, 
+                "x": 1838, 
                 "w": 30, 
                 "h": 36
             }
         }, 
         "shortcut1.png": {
             "frame": {
-                "y": 486, 
-                "x": 1668, 
+                "y": 291, 
+                "x": 1908, 
                 "w": 15, 
                 "h": 36
             }, 
@@ -246,19 +582,19 @@
                 "w": 15
             }, 
             "spriteSourceSize": {
-                "y": 486, 
-                "x": 1668, 
+                "y": 291, 
+                "x": 1908, 
                 "w": 15, 
                 "h": 36
             }
         }
     }, 
     "meta": {
-        "hash": "2df8883e3e", 
+        "hash": "518c9e4f4b", 
         "name": "game-atlas", 
-        "height": 1414, 
+        "height": 1638, 
         "sprite_path": "game-atlas.png", 
-        "width": 1726, 
+        "width": 1934, 
         "version": "0.11.1", 
         "sprite_filename": "game-atlas.png"
     }

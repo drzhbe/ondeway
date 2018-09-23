@@ -10,7 +10,7 @@ function Reactor(game, x, y, w, h, ship, capacity) {
 	this.w = toDip(Room.prototype.size/2);
 	this.h = toDip(Room.prototype.size/2);
 
-	this.sprite = this.create(0, 0, 'reactor-atlas');
+	this.sprite = this.create(0, 0, 'game-atlas', 'reactor0.png');
 	this.sprite.width = this.w;
 	this.sprite.height = this.h;
 	this.sprite.anchor.setTo(0.5, 0.5);
@@ -26,5 +26,5 @@ Reactor.prototype.constructor = Reactor;
 */
 Reactor.prototype.updateAvailableEnergy = function(energy) {
 	this.energy = Math.min(energy, this.maxCapacity);
-	this.sprite.frameName = 'reactor' + energy;
+	this.sprite.frameName = `reactor${energy}.png`;
 };

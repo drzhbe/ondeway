@@ -23,14 +23,8 @@ function gameState(game) {
     preload: function() {
       game.load.image('stars', 'img/stars.jpg');
       game.load.image('stars2', 'img/stars5.jpg');
-      game.load.image('cargo', 'img/cargo.png');
-      game.load.image('openedCargo', 'img/openedCargo.png');
 
       game.load.atlas('game-atlas', 'img/game-atlas.png', 'img/game-atlas.json');
-      game.load.atlas('cargo-atlas', 'img/cargo-atlas.png', 'img/cargo-atlas.json');
-      game.load.atlas('energy-atlas', 'img/energy-atlas.png', 'img/energy-atlas.json');
-      game.load.atlas('reactor-atlas', 'img/reactor-atlas.png', 'img/reactor-atlas.json');
-      game.load.atlas('target-atlas', 'img/target-atlas.png', 'img/target-atlas.json');
 
       game.load.spritesheet('explosion', 'img/explosion_sprt.png', 110, 74);
     
